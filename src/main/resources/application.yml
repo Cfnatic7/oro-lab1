@@ -1,0 +1,31 @@
+spring:
+#  liquibase:
+#    change-log: classpath:changelog/liquibase_changelog.xml
+  profiles:
+    active: development
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: true
+    open-in-view: false
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/oro
+    username: postgres
+    password: postgres
+
+server:
+  servlet:
+    context-path: /api
+  port: 8080
+  tomcat:
+    accesslog:
+      enabled: true
+    directory: logs
+    file-date-format: yyyy-mm-dd
+    prefix: access_log
+    suffix: .log
+
