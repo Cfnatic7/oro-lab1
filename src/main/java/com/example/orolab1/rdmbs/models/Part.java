@@ -21,6 +21,6 @@ public class Part {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @ManyToMany(mappedBy = "parts")
+    @ManyToMany(mappedBy = "parts", fetch = FetchType.EAGER)
     private List<CarModel> carModels;
 }
