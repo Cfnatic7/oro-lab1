@@ -1,0 +1,74 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <changeSet author="Michał (generated)" id="1679163929371-1">
+        <createTable tableName="user_entity">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_entity_pkey"/>
+            </column>
+            <column name="email" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Michał (generated)" id="1679163929371-2">
+        <createTable tableName="car_model">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="car_model_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Michał (generated)" id="1679163929371-3">
+        <createTable tableName="category">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="category_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Michał (generated)" id="1679163929371-4">
+        <createTable tableName="part">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="part_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="price" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="category_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Michał (generated)" id="1679163929371-5">
+        <createTable tableName="transaction">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="transaction_pkey"/>
+            </column>
+            <column name="purchase_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="part_id" type="BIGINT"/>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Michał (generated)" id="1679163929371-6">
+        <createTable tableName="car_model_part">
+            <column name="car_model_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="part_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Michał (generated)" id="1679163929371-7">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="transaction" constraintName="fk95xf7x9b2h61k1hx87yojfd8d" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user_entity" validate="true"/>
+    </changeSet>
+    <changeSet author="Michał (generated)" id="1679163929371-8">
+        <addForeignKeyConstraint baseColumnNames="car_model_id" baseTableName="car_model_part" constraintName="fke7dxia8xice7wi1olbgyjyw1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="car_model" validate="true"/>
+    </changeSet>
+    <changeSet author="Michał (generated)" id="1679163929371-9">
+        <addForeignKeyConstraint baseColumnNames="category_id" baseTableName="part" constraintName="fkj4flsyagr0wxc3sh24k2key3r" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="category" validate="true"/>
+    </changeSet>
+    <changeSet author="Michał (generated)" id="1679163929371-10">
+        <addForeignKeyConstraint baseColumnNames="part_id" baseTableName="car_model_part" constraintName="fkp7arm1vhtllkbytlwy60l2sp3" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="part" validate="true"/>
+    </changeSet>
+    <changeSet author="Michał (generated)" id="1679163929371-11">
+        <addForeignKeyConstraint baseColumnNames="part_id" baseTableName="transaction" constraintName="fkqqmnh43epobb9r9orgt71jap7" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="part" validate="true"/>
+    </changeSet>
+</databaseChangeLog>

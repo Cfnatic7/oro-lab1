@@ -1,13 +1,14 @@
 spring:
-#  liquibase:
-#    change-log: classpath:changelog/liquibase_changelog.xml
+  liquibase:
+    change-log: classpath:db/changelog/liquibase_changelog.xml
+    enabled: true
   profiles:
     active: development
   jpa:
     database: POSTGRESQL
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     generate-ddl: true
     open-in-view: false
