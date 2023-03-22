@@ -18,6 +18,4 @@ public class Category {
 
     @OneToMany(mappedBy = "category")
     private List<Part> parts;
-
-    // Getters and setters
 }
